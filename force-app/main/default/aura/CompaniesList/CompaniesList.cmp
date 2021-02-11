@@ -1,0 +1,14 @@
+<aura:component controller="CompaniesListController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="companyRecords" type="Company__c[]" />
+    
+    <aura:handler name="init" value="{! this}" action="{! c.doInit}" />
+    <lightning:card>
+        <lightning:layout multipleRows="true">
+            <aura:iteration items="{! v.companyRecords}" var="companyRcd">
+                <lightning:layoutItem size="3" class="item">                                  
+                  <c:CompanyCard selectable ="true"  recordData="{! companyRcd}"></c:CompanyCard>  
+                </lightning:layoutItem>        
+            </aura:iteration>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,35 @@
+<aura:component extends="c:AbstractRecordView">
+    <aura:attribute name="recordData" type="Object" />
+  
+    <lightning:card title="{! v.recordData.companyName}" iconName="action:description" class="slds-card_boundary">
+        <lightning:recordEditForm  objectApiName="Company__c">
+            <lightning:layout multipleRows="true">
+                <aura:if isTrue="{!v.selectable}">
+                    <td role="gridcell">
+                        <div class="slds-truncate slds-align--absolute-center" aura:id="cell" >
+                            <aura:if isTrue="{!v.singleSelect}">
+                                <ui:inputRadio value="{!v.selected}" change="{!c.selectChange}" name="radio"/>
+                                <aura:set attribute="else">
+                                    <ui:inputCheckbox value="{!v.selected}" change="{!c.selectChange}"/>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </td>
+                </aura:if>
+                <aura:iteration items="{! v.recordData.companyFields}" var="companyField">
+                    <lightning:layoutItem size="12" class="slds-p-left_small">
+                        <aura:if isTrue="{! companyField.renderAsCustomComponent == true}">
+                            <c:ProgressBar  value="{!companyField.fieldValue}"   />
+                             <aura:set attribute="else">
+                                 <lightning:inputField  value="{!companyField.fieldValue}" fieldName="{!companyField.fieldName}"  readonly="true" />
+                            </aura:set>
+                        </aura:if>
+                      
+                       <!-- <c:FieldFactory field="{! companyField}"  /> -->
+                    </lightning:layoutItem>
+                </aura:iteration>
+            </lightning:layout>
+        </lightning:recordEditForm>
+    </lightning:card>
+	
+</aura:component>

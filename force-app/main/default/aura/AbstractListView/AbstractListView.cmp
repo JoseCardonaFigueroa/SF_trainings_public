@@ -1,0 +1,24 @@
+<aura:component extensible="true">
+	<aura:attribute name="recordData" type="Object" access='public' />
+    
+    <aura:attribute name="isLoading" type="Boolean" default="false" access="private"/> 
+    <!-- 
+    
+    .... 
+    
+    -->
+    
+   
+    
+     <!-- 
+    
+     	<aura:registerEvent name="genericComponentEvent" type="c:genericComponentEvent" />
+    
+    	<aura:handler name="change" value="{!v.data}" action="{!c.dataChanged}"/>
+
+		....
+    
+    -->
+    
+    {!v.body}
+</aura:component>

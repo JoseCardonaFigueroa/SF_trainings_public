@@ -1,0 +1,19 @@
+<aura:component extensible="true">
+	<aura:attribute name="recordData" type="Object" access='public' />
+    <aura:attribute name="selected" type="Boolean" access="public" description="Indicate if the row is selected"/>
+	<aura:attribute name="actionComponents" type="List" access="public" default="[]" description="The actions components, created by javascript."/>
+	<aura:attribute name="selectable" type="Boolean" access="public" description="Indicate if the row has a select checkbox or radio in the first column" default="false"/>
+    <aura:attribute name="singleSelect" type="Boolean" access="public" description="Indicate if the row has a select radio for single select or a checkbox when false in the first column" default="false"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false" access="private"/> 
+    <!-- 
+    ....
+
+    -->  
+    <aura:registerEvent name="genericComponentEvent" type="c:genericComponentEvent" />
+    
+    <aura:method name="setSelectedAction" description="Method sets the data" action="{!c.setSelected}" access="public">
+        <aura:attribute name="selected" type="Boolean" description="Select or deselect the row"/>
+    </aura:method>
+    
+    {!v.body}
+</aura:component>
